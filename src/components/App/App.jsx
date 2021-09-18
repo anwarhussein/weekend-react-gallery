@@ -6,6 +6,8 @@ import './App.css';
 function App() {
 
   const [galleryList, setGalleryList] = useState([]);
+  const [loveIt, setLoveIt] = useState(0);
+  const [imageDescription, setImageDescription] = useState(false);
 
   
   const fetchImages =() =>{
@@ -25,6 +27,17 @@ function App() {
     fetchImages();
   }, []);
 
+
+  const handleClick = (index) =>
+  alert('button was clicked at position',index)
+
+   //setLoveIt(prev => prev +1);
+
+  const handleDescription = () =>{
+    return;
+  }
+
+  
     return (
       <>
       
@@ -33,15 +46,24 @@ function App() {
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
         <p>Gallery goes here</p>
-        {/* <img src="images/goat_small.jpg"/> */}
-        <ul>
-        {galleryList.map(item =>
-                 <img src={item.path}/>
-          )}
-
+        
+        <ul className="image-grid" >
+           {galleryList.map((image, index) =>{
+                 return <div key= {image.id}><img src={image.path} onClick={handleDescription} alt= {image.description}/>
+                 <button onClick={() =>handleClick(key)}>likes</button>
+                 <p>0 people love this!</p>
+                 </div>
+})}
+          
         </ul>
+        
+      
+        
+       
+        
       </div>
       
+         
       </>
     );
 }
