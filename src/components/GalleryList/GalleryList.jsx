@@ -1,15 +1,16 @@
 import React from 'react'
+import GalleryItem from '../GalleryItem/GalleryItem';
 
 function GalleryList( props) {
 
 const arrayToDisplay = props.galleryList.map((image, index) => {
-          return <div key={image.id}>{image.description}</div>
+          return <GalleryItem image={image} key= {image.id}/>
        
        });
 
       
     return (
-        <div>
+        <div className="image-grid">
           {arrayToDisplay}
         </div>
     )
