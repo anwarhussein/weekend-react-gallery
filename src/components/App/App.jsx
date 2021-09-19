@@ -8,7 +8,7 @@ function App() {
 
   const [galleryList, setGalleryList] = useState([]);
   const [loveIt, setLoveIt] = useState(0);
-  const [imageDescription, setImageDescription] = useState(false);
+  
 
 
   const fetchImages = () => {
