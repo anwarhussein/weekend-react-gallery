@@ -5,7 +5,7 @@ function GalleryItem(props) {
 
     const [imageShow, setImageShow] = useState(true);
     const [imageDescription, setImageDescription] = useState(false);
-    const [countLikes, setCountLikes] = useState(0);
+    //const [countLikes, setCountLikes] = useState(0);
 
     const handleClick = () =>{
         setImageShow(!imageShow);
@@ -14,6 +14,7 @@ function GalleryItem(props) {
     
     const handleUpdateLikes = (itemLikedId) =>{
         console.log("Item photo the user clicked to like", itemLikedId );
+        //setCountLikes(countLikes);
 
         props.updateLikes(itemLikedId);
     }
@@ -27,7 +28,7 @@ function GalleryItem(props) {
             {imageDescription && <p>{props.image.description}</p>}
             </div>
             <div><button onClick={() => handleUpdateLikes(props.image.id)}>likes!</button>
-            <p>0 people love this!</p> </div>
+            <p>{props.image.likes} people love this!</p> </div>
             </div>  
        </>
     

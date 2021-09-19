@@ -28,7 +28,7 @@ function App() {
   const updateLikes = (itemLikedId) =>{
     axios({
        method: 'PUT',
-       url:`/gallery ${itemLikedId}`,
+       url:`/gallery/like/ ${itemLikedId}`,
     })
     .then((response) =>{
       fetchImages();
@@ -51,8 +51,9 @@ function App() {
       <p>Gallery goes here</p>
       <div>
      
-      <GalleryList galleryList ={galleryList}
+      <GalleryList  galleryList ={galleryList}
         updateLikes={updateLikes}
+        fetchImages = {fetchImages}
 
       />
 

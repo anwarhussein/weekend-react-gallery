@@ -6,6 +6,8 @@ function GalleryList( props) {
 const arrayToDisplay = props.galleryList.map((image, index) => {
         return <GalleryItem image={image} key= {image.id}
               updateLikes= {props.updateLikes}
+              fetchImages= {props.fetchImages}
+
         />
        
        });
