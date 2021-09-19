@@ -7,10 +7,7 @@ import './App.css';
 function App() {
 
   const [galleryList, setGalleryList] = useState([]);
-  const [loveIt, setLoveIt] = useState(0);
   
-
-
   const fetchImages = () => {
 
     axios({
@@ -28,9 +25,20 @@ function App() {
     fetchImages();
   }, []);
 
+  const updateLikes = (itemLikedId) =>{
+    axios({
+       method: 'PUT',
+       url:`/gallery ${itemLikedId}`,
+    })
+    .then((response) =>{
+      fetchImages();
+    }).catch((error) =>{
+      alert('Error in liking an image');
+      console.log(error);
+    });
+  }
 
-  const handleClick = () =>
-    alert('button was clicked at position')
+ 
 
 
   return (
@@ -43,7 +51,11 @@ function App() {
       <p>Gallery goes here</p>
       <div>
      
-      <GalleryList galleryList ={galleryList}/>
+      <GalleryList galleryList ={galleryList}
+        updateLikes={updateLikes}
+
+      />
+
       </div>
       
     </div>

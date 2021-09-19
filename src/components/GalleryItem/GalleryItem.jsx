@@ -4,22 +4,31 @@ import { useState} from 'react';
 function GalleryItem(props) {
 
     const [imageShow, setImageShow] = useState(true);
-    const [imageDescription, setImageDescription] = useState(false)
+    const [imageDescription, setImageDescription] = useState(false);
+    const [countLikes, setCountLikes] = useState(0);
 
     const handleClick = () =>{
         setImageShow(!imageShow);
         setImageDescription(!imageDescription);
     }
+    
+    const handleUpdateLikes = (itemLikedId) =>{
+        console.log("Item photo the user clicked to like", itemLikedId );
 
+        props.updateLikes(itemLikedId);
+    }
+    
+    
     return (
         <>
-            <div onClick ={handleClick} >
+            <div>
+            <div onClick ={handleClick}>
             {imageShow  && <img src={props.image.path} alt={props.image.description}/>}
             {imageDescription && <p>{props.image.description}</p>}
-            <button>likes!</button>
-            <p>0 people love this!</p> 
-            
             </div>
+            <div><button onClick={() => handleUpdateLikes(props.image.id)}>likes!</button>
+            <p>0 people love this!</p> </div>
+            </div>  
        </>
     
     )
